@@ -533,28 +533,34 @@
                 $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'DD/MM/YYYY h:mm A'});
 
                 $('#dialer_add_campaign_next').on('click', function() {
-                    $('#dialer_add_campaign').find('#progressbar').width('20%');
                     wizard('next');
                 });
 
                 $('#dialer_add_campaign_prev').on('click', function() {
-                    $('#dialer_add_campaign').find('#progressbar').width('-20%');
                     wizard('prev')
                 });
 
                 function wizard(action) {
-                    var del = $('#dialer_add_campaign').find('#dialer_tabs>li.active').index()
+                    var old_attr = $('#dialer_add_campaign').find('#dialer_tabs>li.active').index()
 
                     if (action == 'next')
-                        var add = del + 1
+                        var new_attr = old_attr + 1
                     else
-                        var add = del - 1
+                        var new_attr = old_attr - 1
 
-                    $('#dialer_add_campaign').find( '#tab_'+del ).removeClass('active')
-                    $('#dialer_add_campaign').find( '#dialer_tabs li:eq('+del+')' ).removeClass('active')
+                    $('#dialer_add_campaign').find( '#tab_'+old_attr ).removeClass('active')
+                    $('#dialer_add_campaign').find( '#dialer_tabs li:eq('+old_attr+')' ).removeClass('active')
 
-                    $('#dialer_add_campaign').find( '#tab_'+add ).addClass('active')
-                    $('#dialer_add_campaign').find( '#dialer_tabs li:eq('+add+')' ).addClass('active')
+                    $('#dialer_add_campaign').find( '#tab_'+new_attr ).addClass('active')
+                    $('#dialer_add_campaign').find( '#dialer_tabs li:eq('+new_attr+')' ).addClass('active')
+
+                    wizard_progressbar(new_attr)
+                }
+
+                function wizard_progressbar(item) {
+                    var items = $('#dialer_add_campaign').find( '#dialer_tabs>' ).length - 1
+                    var percent = (item * 100 / items) * 1;
+                    $('#dialer_add_campaign').find('#progressbar').width(percent+'%');
                 }
 
             });
