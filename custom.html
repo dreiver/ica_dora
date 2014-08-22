@@ -438,11 +438,6 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label>Description</label>
-                                                    <textarea class="form-control" rows="2" placeholder="Enter ..."></textarea>
-                                                </div>
-
                                                 <!-- Date and time range -->
                                                 <div class="form-group">
                                                     <label>Start and end campaign:</label>
@@ -453,6 +448,11 @@
                                                         <input type="text" class="form-control pull-right" id="reservationtime"/>
                                                     </div><!-- /.input group -->
                                                 </div><!-- /.form group -->
+
+                                                <div class="form-group">
+                                                    <label>Description</label>
+                                                    <textarea class="form-control" rows="2" placeholder="Enter ..."></textarea>
+                                                </div>
 
                                                 <!-- Date and time range -->
                                                 <!--<div class="form-group">
@@ -478,7 +478,7 @@
                                     </form>
                                 </div><!-- /.box-body -->
                                 <div class="box-footer">
-                                    <button id='dialer_add_campaign_prev' class="btn btn-default">
+                                    <button id='dialer_add_campaign_prev' class="btn btn-default disabled">
                                         <i class="fa fa-arrow-left"></i>
                                         Prev
                                     </button>
@@ -541,12 +541,29 @@
                 });
 
                 function wizard(action) {
+                    var items = $('#dialer_add_campaign').find( '#dialer_tabs>' ).length - 1
                     var old_attr = $('#dialer_add_campaign').find('#dialer_tabs>li.active').index()
+
+                    if (old_attr < 0)
+                        return false;
 
                     if (action == 'next')
                         var new_attr = old_attr + 1
                     else
                         var new_attr = old_attr - 1
+
+                    if (old_attr == 0)
+                        $('#dialer_add_campaign_prev').removeClass('disabled')
+
+                    if (new_attr == 0)
+                        $('#dialer_add_campaign_prev').addClass('disabled')
+
+                    if (new_attr == items)
+                        //Agregar boton finalizar o enviar formulario
+                        $('#dialer_add_campaign_next').addClass('disabled')
+                    else
+                        $('#dialer_add_campaign_next').removeClass('disabled')
+
 
                     $('#dialer_add_campaign').find( '#tab_'+old_attr ).removeClass('active')
                     $('#dialer_add_campaign').find( '#dialer_tabs li:eq('+old_attr+')' ).removeClass('active')
@@ -554,11 +571,10 @@
                     $('#dialer_add_campaign').find( '#tab_'+new_attr ).addClass('active')
                     $('#dialer_add_campaign').find( '#dialer_tabs li:eq('+new_attr+')' ).addClass('active')
 
-                    wizard_progressbar(new_attr)
+                    wizard_progressbar(items, new_attr)
                 }
 
-                function wizard_progressbar(item) {
-                    var items = $('#dialer_add_campaign').find( '#dialer_tabs>' ).length - 1
+                function wizard_progressbar(items, item) {
                     var percent = (item * 100 / items) * 1;
                     $('#dialer_add_campaign').find('#progressbar').width(percent+'%');
                 }
