@@ -529,8 +529,10 @@
         <script type="text/javascript">
             $(function() {
 
+                //$('form').validate();
+
                 //Date range picker with time picker
-                $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'DD/MM/YYYY h:mm A'});
+                $('#dialer_add_campaign').find('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'DD/MM/YYYY h:mm A'});
 
                 $('#dialer_add_campaign_next').on('click', function() {
                     wizard('next');
