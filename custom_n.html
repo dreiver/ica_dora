@@ -444,6 +444,11 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group">
+                                                    <label>Description</label>
+                                                    <textarea class="form-control" rows="2" placeholder="Enter ..."></textarea>
+                                                </div>
+
                                                 <!-- Date and time range -->
                                                 <div class="form-group">
                                                     <label>Start and end campaign:</label>
@@ -456,123 +461,59 @@
                                                 </div><!-- /.form group -->
 
                                                 <div class="form-group">
-                                                    <label>Description</label>
-                                                    <textarea class="form-control" rows="2" placeholder="Enter ..."></textarea>
-                                                </div>
-
-
-
-                                                <div class="form-group">
                                                     <div class="box">
                                                         <div class="box-header">
-                                                            <h3 class="box-title">Responsive Hover Table</h3>
-                                                            <div class="box-tools">
-                                                                <div class="input-group">
-                                                                    <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                                                                    <div class="input-group-btn">
-                                                                        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            <h3 class="box-title">Week Days</h3>
                                                         </div><!-- /.box-header -->
                                                         <div class="box-body table-responsive no-padding">
                                                             <table class="table table-hover">
                                                                 <tr>
-                                                                    <th>From</th>
-                                                                    <th>To</th>
-                                                                    <th>Days</th>
-                                                                    <th>Action</th>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>22-07-2014</td>
-                                                                    <td>23-07-2014</td>
-                                                                    <td>
-                                                                        <table class="table table-hover">
-                                                                            <tr>
-                                                                                <td>Su = 9-12</td>
-                                                                                <td>Mo = 9-18</td>
-                                                                                <td>Tu = 9-18</td>
-                                                                                <td>We = 9-18</td>
-                                                                                <td>Th = 9-18</td>
-                                                                                <td>Fr = 9-18</td>
-                                                                                <td>Sa = 9-12</td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </td>
-                                                                    <td><span class="label label-warning">EDIT</span> <span class="label label-warning">DEL</span></td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>
-                                                                        <!-- Date and time range -->
-                                                                        <div class="form-group">
-                                                                            <div class="input-group">
-                                                                                <div class="input-group-addon">
-                                                                                    <i class="fa fa-clock-o"></i>
-                                                                                </div>
-                                                                                <input type="text" class="form-control pull-right" id="reservationtime"/>
-                                                                            </div><!-- /.input group -->
-                                                                        </div><!-- /.form group -->
-                                                                    </td>
-                                                                    <td>
-                                                                        <!-- Date and time range -->
-                                                                        <div class="form-group">
-                                                                            <div class="input-group">
-                                                                                <div class="input-group-addon">
-                                                                                    <i class="fa fa-clock-o"></i>
-                                                                                </div>
-                                                                                <input type="text" class="form-control pull-right" id="reservationtime"/>
-                                                                            </div><!-- /.input group -->
-                                                                        </div><!-- /.form group -->
-                                                                    </td>
                                                                     <td>
                                                                         <table class="table table-hover">
                                                                             <tr>
                                                                                 <td>
                                                                                     Domingo
-                                                                                    <input id="range_20" type="text" name="domingo" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="0" data-to="23" data-hasgrid="true" />
+                                                                                    <input id="range_20" type="text" name="domingo" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="10" data-to="12" data-hasgrid="true" />
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>
                                                                                     Lunes
-                                                                                    <input id="range_21" type="text" name="lunes" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="0" data-to="23" data-hasgrid="true" />
+                                                                                    <input id="range_21" type="text" name="lunes" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="10" data-to="20" data-hasgrid="true" />
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>
                                                                                     Martes
-                                                                                    <input id="range_22" type="text" name="martes" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="0" data-to="23" data-hasgrid="true" />
+                                                                                    <input id="range_22" type="text" name="martes" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="9" data-to="20" data-hasgrid="true" />
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>
                                                                                     Miercoles
-                                                                                    <input id="range_23" type="text" name="miercoles" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="0" data-to="23" data-hasgrid="true" />
+                                                                                    <input id="range_23" type="text" name="miercoles" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="9" data-to="20" data-hasgrid="true" />
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>
                                                                                     Jueves
-                                                                                    <input id="range_24" type="text" name="jueves" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="0" data-to="23" data-hasgrid="true" />
+                                                                                    <input id="range_24" type="text" name="jueves" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="9" data-to="20" data-hasgrid="true" />
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>
                                                                                     Viernes
-                                                                                    <input id="range_25" type="text" name="viernes" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="0" data-to="23" data-hasgrid="true" />
+                                                                                    <input id="range_25" type="text" name="viernes" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="9" data-to="20" data-hasgrid="true" />
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>
                                                                                     Sabado
-                                                                                    <input id="range_26" type="text" name="sabado" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="0" data-to="23" data-hasgrid="true" />
+                                                                                    <input id="range_26" type="text" name="sabado" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="9" data-to="13" data-hasgrid="true" />
                                                                                 </td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td><span class="label label-warning">ADD</span></td>
                                                                 </tr>
 
                                                             </table>
