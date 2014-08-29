@@ -403,279 +403,114 @@
                 <section class="content-header">
                     <h1>
                         Dialer
-                        <small>New campaign</small>
+                        <small>Audio File Manager</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li><a href="#">Forms</a></li>
-                        <li class="active">Advanced Elements</li>
+                        <li class="active">Audio File Manager</li>
                     </ol>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
-                        <div class="col-md-10">
-                            <div id='dialer_add_campaign' class="box box-primary">
-                                <div class="box-footer">
-                                    <button id='dialer_add_campaign_prev' class="btn btn-default disabled">
-                                        <i class="fa fa-arrow-left"></i>
-                                        Prev
-                                    </button>
-                                    <button id='dialer_add_campaign_next' class="btn btn-success btn-next" data-last="Finish ">
-                                        Next 
-                                        <i class="fa fa-arrow-right"></i>
-                                    </button>
-                                </div>
+                        <div class="col-xs-12">
+                            <div class="box">
                                 <div class="box-header">
-
-                                    <div class="nav-tabs-custom">
-                                        <ul id="dialer_tabs" class="nav nav-tabs">
-                                            <li class="active"><a>Basic data</a></li>
-                                            <li><a>Audios</a></li>
-                                            <li><a>Plays</a></li>
-                                            <li><a>Caca</a></li>
-                                        </ul>
+                                    <h3 class="box-title">CRM Audio Files</h3>
+                                    <div class="box-tools">
+                                        <div class="input-group">
+                                            <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="progress xs progress-striped active">
-                                    <div class="progress-bar progress-bar-primary" id="progressbar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                                    </div>
-                                </div>
-
-                                <div class="box-body">
-                                    <form>
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="tab_0">
-                                                <div class="form-group">
-                                                    <label>Campaign Name</label>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
-                                                        <input class="form-control" id="exampleInputEmail1" placeholder="Enter Campain Name" type="email">
+                                </div><!-- /.box-header -->
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-hover">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Speech</th>
+                                            <th>Locuted by</th>
+                                            <th>Tags</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        <tr>
+                                            <td>ab5...</td>
+                                            <td>ingrese su numero de documento.</td>
+                                            <td>Mariana</td>
+                                            <td>
+                                                <span class="label label-success">ingreso</span> 
+                                                <span class="label label-success">dni</span> 
+                                                <span class="label label-success">numero</span>
+                                            </td>
+                                            <td>
+                                                <span class="label label-warning">EDIT</span>
+                                                <span class="label label-warning">DEL</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                 <div class="input-group">
+                                                    <div class="custom-file-upload input-group-btn">
+                                                        <button type="button" class="btn btn-primary">
+                                                            <span>Browse...</span>
+                                                            <input id="welcome_sound_file_upload_file" name="welcome" type="file" class="upload-custom-file" />
+                                                        </button>
                                                     </div>
+                                                    <input id="welcome_sound_file_upload_text" class="form-control" placeholder="Choose different file or keep the actual one" disabled="disabled" />
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <label>Description</label>
-                                                    <textarea class="form-control" rows="2" placeholder="Enter ..."></textarea>
-                                                </div>
-
-                                                <!-- Date and time range -->
-                                                <div class="form-group">
-                                                    <label>Start and end campaign:</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-clock-o"></i>
-                                                        </div>
-                                                        <input type="text" class="form-control pull-right" id="reservationtime"/>
-                                                    </div><!-- /.input group -->
-                                                </div><!-- /.form group -->
-
-                                                <div class="form-group">
-                                                    <div class="box">
-                                                        <div class="box-header">
-                                                            <h3 class="box-title">Week Days</h3>
-                                                        </div><!-- /.box-header -->
-                                                        <div class="box-body table-responsive no-padding">
-                                                            <table class="table table-hover">
-                                                                <tr>
-                                                                    <td>
-                                                                        <table class="table table-hover">
-                                                                            <tr>
-                                                                                <td>
-                                                                                    Domingo
-                                                                                    <input id="range_20" type="text" name="domingo" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="10" data-to="12" data-hasgrid="true" />
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    Lunes
-                                                                                    <input id="range_21" type="text" name="lunes" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="10" data-to="20" data-hasgrid="true" />
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    Martes
-                                                                                    <input id="range_22" type="text" name="martes" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="9" data-to="20" data-hasgrid="true" />
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    Miercoles
-                                                                                    <input id="range_23" type="text" name="miercoles" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="9" data-to="20" data-hasgrid="true" />
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    Jueves
-                                                                                    <input id="range_24" type="text" name="jueves" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="9" data-to="20" data-hasgrid="true" />
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    Viernes
-                                                                                    <input id="range_25" type="text" name="viernes" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="9" data-to="20" data-hasgrid="true" />
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    Sabado
-                                                                                    <input id="range_26" type="text" name="sabado" value="0;23" data-type="double" data-step="1" data-postfix=" hours" data-from="9" data-to="13" data-hasgrid="true" />
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-
-                                                            </table>
-                                                        </div><!-- /.box-body -->
-                                                    </div><!-- /.box -->
-                                                </div>
-                                            </div><!-- /.tab-pane -->
-                                            <div class="tab-pane" id="tab_1">
-                                                <div class="form-group">
-                                                    <label for="exampleInputFile">Audio Bienvenida</label>
-                                                    <input type="file" id="exampleInputFile">
-                                                    <p class="help-block">Seleccione el audio 8b 8khz que quiere que se oiga cuando se responda el llamdo.</p>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputFile">Audio Aviso</label>
-                                                    <input type="file" id="exampleInputFile">
-                                                    <p class="help-block">Seleccione el audio 8b 8khz que quiere que se oiga como aviso. (alternativo)</p>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputFile">Audio Despedido</label>
-                                                    <input type="file" id="exampleInputFile">
-                                                    <p class="help-block">Seleccione el audio 8b 8khz que quiere que se oiga como despedida al finalziar el llamado.</p>
-                                                </div>
-                                            </div><!-- /.tab-pane -->
-
-                                            <div class="tab-pane" id="tab_2">
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <div class="box">
-                                                            <div class="box-header">
-                                                                <h3 class="box-title">Audio Files to Play</h3>
-                                                            </div><!-- /.box-header -->
-                                                            <div class="box-body table-responsive no-padding">
-                                                                <table class="table table-hover">
-                                                                    <tr>
-                                                                        <th>Order</th>
-                                                                        <th>Class</th>
-                                                                        <th>Speech</th>
-                                                                        <th>Action</th>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <td>Greeting</td>
-                                                                        <td>Welcome to ICA Dial System</td>
-                                                                        <td>
-                                                                            <span class="label label-warning">EDIT</span>
-                                                                            <span class="label label-danger">DEL</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="form-group">
-                                                                                <select class="form-control">
-                                                                                    <option>1</option>
-                                                                                    <option>2</option>
-                                                                                    <option selected>3</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="form-group">
-                                                                                <select class="form-control">
-                                                                                    <option>Greeting</option>
-                                                                                    <option selected>Speech</option>
-                                                                                    <option>Goodbye</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <a class="btn btn-block btn-social btn-google-plus">
-                                                                                <i class="fa fa-music"></i> "Remember change your..." Click to change from library <i class="fa fa-refresh"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span class="label label-warning">SAVE</span>
-                                                                            <span class="label label-warning">CANCEL</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>5</td>
-                                                                        <td>Good bye</td>
-                                                                        <td>Good bye, thanks you for your call.</td>
-                                                                        <td>
-                                                                            <span class="label label-warning">EDIT</span>
-                                                                            <span class="label label-danger">DEL</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="form-group">
-                                                                                <select class="form-control">
-                                                                                    <option>1</option>
-                                                                                    <option>2</option>
-                                                                                    <option>3</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="form-group">
-                                                                                <select class="form-control">
-                                                                                    <option>Greeting</option>
-                                                                                    <option>Speech</option>
-                                                                                    <option>Goodbye</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <a class="btn btn-block btn-social btn-bitbucket">
-                                                                                <i class="fa fa-music"></i> Select audio from library
-                                                                            </a>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span class="label label-warning">ADD</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </div><!-- /.box-body -->
-                                                        </div><!-- /.box -->
+                                            </td>
+                                            <td><textarea class="form-control" rows="3" placeholder="ingrese su fecha de nacimiento.">ingrese su fecha de nacimiento.</textarea></td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option selected>Mariana</option>
+                                                    <option>Patricia</option>
+                                                    <option>Google</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <textarea class="form-control" rows="3" placeholder="ingrese su numero de documento.">ingreso, fecha, nacimiento</textarea>
+                                            </td>
+                                            <td>
+                                                <span class="label label-warning">SAVE</span>
+                                                <span class="label label-warning">CANCEL</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                 <div class="input-group">
+                                                    <div class="custom-file-upload input-group-btn">
+                                                        <button type="button" class="btn btn-primary">
+                                                            <span>Browse...</span>
+                                                            <input id="welcome_sound_file_upload_file" name="welcome" type="file" class="upload-custom-file" />
+                                                        </button>
                                                     </div>
+                                                    <input id="welcome_sound_file_upload_text" class="form-control" placeholder="Choose file" disabled="disabled" />
                                                 </div>
-                                            </div><!-- /.tab-pane -->
-                                        </div><!-- /.tab-content -->
-                                    </form>
+                                            </td>
+                                            <td><textarea class="form-control" rows="3" placeholder="Complete here with the context of the audio file"></textarea></td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option selected>Select the speaker's voice...</option>
+                                                    <option >Mariana</option>
+                                                    <option>Patricia</option>
+                                                    <option>Google</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <textarea class="form-control" rows="3" placeholder="Complete with tags seprated with comma. Be specific. Use special words used on the speech."></textarea>
+                                            </td>
+                                            <td>
+                                                <span class="label label-warning">ADD</span>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div><!-- /.box-body -->
-                                <div class="box-footer">
-                                    <button id='dialer_add_campaign_prev' class="btn btn-default disabled">
-                                        <i class="fa fa-arrow-left"></i>
-                                        Prev
-                                    </button>
-                                    <button id='dialer_add_campaign_next' class="btn btn-success btn-next" data-last="Finish ">
-                                        Next 
-                                        <i class="fa fa-arrow-right"></i>
-                                    </button>
-                                </div>
                             </div><!-- /.box -->
-                        </div><!-- /.col (left) -->
-
-                        <!-- iCheck -->
-                        <!--<div class="col-md-4">
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h3 class="box-title">iCheck - Checkbox & Radio Inputs</h3>
-                                </div>
-                                <div class="box-body">
-                                    <h5>caca</h5>
-                                </div>
-                            </div>
-                        </div>-->
-
+                        </div>
                     </div><!-- /.row -->
-
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
