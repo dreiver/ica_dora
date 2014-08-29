@@ -422,12 +422,11 @@
                                     </div>
                                 </div>
                                 <div class="progress xs progress-striped active">
-                                    <div class="progress-bar progress-bar-primary" id="progressbar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                    <div class="progress-bar progress-bar-primary" id="wizard_progressbar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
                                     </div>
                                 </div>
-
                                 <div class="box-body">
-                                    <form>
+                                    <form action="file-echo2.php" method="post" enctype="multipart/form-data">
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="tab_0">
                                                 <div class="form-group">
@@ -437,7 +436,6 @@
                                                         <input class="form-control" id="exampleInputEmail1" placeholder="Enter Campain Name" type="email">
                                                     </div>
                                                 </div>
-
                                                 <!-- Date and time range -->
                                                 <div class="form-group">
                                                     <label>Start and end campaign:</label>
@@ -448,39 +446,38 @@
                                                         <input type="text" class="form-control pull-right" id="reservationtime"/>
                                                     </div><!-- /.input group -->
                                                 </div><!-- /.form group -->
-
                                                 <div class="form-group">
                                                     <label>Description</label>
                                                     <textarea class="form-control" rows="2" placeholder="Enter ..."></textarea>
                                                 </div>
-
                                             </div><!-- /.tab-pane -->
                                             <div class="tab-pane" id="tab_1">
-
                                                 <div class="form-group">
                                                     <label>Welcome audio</label>
                                                     <div class="input-group">
-
                                                         <div class="custom-file-upload input-group-btn">
                                                             <button type="button" class="btn btn-primary">
                                                                 <span>Browse...</span>
-                                                                <input id="welcome_sound_file_upload_file" type="file" class="upload-custom-file" />
+                                                                <input id="welcome_sound_file_upload_file" name="welcome" type="file" class="upload-custom-file" />
                                                             </button>
                                                         </div>
                                                         <input id="welcome_sound_file_upload_text" class="form-control" placeholder="Choose File" disabled="disabled" />
-
                                                     </div>
                                                 </div>
-
                                             </div><!-- /.tab-pane -->
-
                                             <div class="tab-pane" id="tab_2">
                                                 caca
                                             </div><!-- /.tab-pane -->
                                         </div><!-- /.tab-content -->
+                                        <button type="submit" value="Upload" class="btn btn-primary">Upload</button>
                                     </form>
                                 </div><!-- /.box-body -->
                                 <div class="box-footer">
+                                    <div id="main_upload_progress" class="progress sm progress-striped active" style="display: none;">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" id="upload_progress" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                            <span class="sr-only">0% Complete</span>
+                                        </div>
+                                    </div>
                                     <button id='dialer_add_campaign_prev' class="btn btn-default disabled">
                                         <i class="fa fa-arrow-left"></i>
                                         Prev
@@ -492,9 +489,7 @@
                                 </div>
                             </div><!-- /.box -->
                         </div><!-- /.col (left) -->
-                        
                     </div><!-- /.row -->
-
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
@@ -516,6 +511,8 @@
         <script src="js/AdminLTE/app.js" type="text/javascript"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="js/AdminLTE/demo.js" type="text/javascript"></script>
+        <!-- ajaxForm plugin -->
+        <script src="http://malsup.github.com/jquery.form.js"></script>
         <!-- Page script -->
         <script type="text/javascript">
             $(function() {
@@ -537,9 +534,39 @@
                     $('#welcome_sound_file_upload_text').val( this.value );
                 });
 
+                $('form').ajaxForm({
+
+                    beforeSend: function() {
+                        //$('#status').empty();
+                        var percentVal = '0%';
+                        $('#upload_progress').width(percentVal)
+                        $('#main_upload_progress').fadeIn( 'slow' );
+                        //percent.html(percentVal);
+                    },
+                    uploadProgress: function(event, position, total, percentComplete) {
+                        var percentVal = percentComplete + '%';
+                        $('#upload_progress').width(percentVal)
+                        //percent.html(percentVal);
+                        //console.log(percentVal, position, total);
+                    },
+                    success: function() {
+                        var percentVal = '100%';
+                        $('#upload_progress').width(percentVal)
+                        //percent.html(percentVal);
+                    },
+                    complete: function(xhr) {
+                        //$('#status').html(xhr.responseText);
+                        $('#main_upload_progress').fadeOut( 'slow' );
+                    }
+
+                });
+
                 function wizard(action) {
-                    var items = $('#dialer_add_campaign').find( '#dialer_tabs>' ).length - 1
-                    var old_attr = $('#dialer_add_campaign').find('#dialer_tabs>li.active').index()
+                    var main = $('#dialer_add_campaign')
+                    var items = main.find( '#dialer_tabs>' ).length - 1
+                    var old_attr = main.find('#dialer_tabs>li.active').index()
+                    var prev = $('#dialer_add_campaign_prev')
+                    var next = $('#dialer_add_campaign_next')
 
                     if (old_attr < 0)
                         return false;
@@ -550,30 +577,29 @@
                         var new_attr = old_attr - 1
 
                     if (old_attr == 0)
-                        $('#dialer_add_campaign_prev').removeClass('disabled')
+                        prev.removeClass('disabled')
 
                     if (new_attr == 0)
-                        $('#dialer_add_campaign_prev').addClass('disabled')
+                        prev.addClass('disabled')
 
                     if (new_attr == items)
-                        //Agregar boton finalizar o enviar formulario
-                        $('#dialer_add_campaign_next').addClass('disabled')
+                        next.addClass('disabled') //Agregar boton finalizar o enviar formulario
                     else
-                        $('#dialer_add_campaign_next').removeClass('disabled')
+                        next.removeClass('disabled')
 
 
-                    $('#dialer_add_campaign').find( '#tab_'+old_attr ).removeClass('active')
-                    $('#dialer_add_campaign').find( '#dialer_tabs li:eq('+old_attr+')' ).removeClass('active')
+                    main.find( '#tab_'+old_attr ).removeClass('active')
+                    main.find( '#dialer_tabs li:eq('+old_attr+')' ).removeClass('active')
 
-                    $('#dialer_add_campaign').find( '#tab_'+new_attr ).addClass('active')
-                    $('#dialer_add_campaign').find( '#dialer_tabs li:eq('+new_attr+')' ).addClass('active')
+                    main.find( '#tab_'+new_attr ).addClass('active')
+                    main.find( '#dialer_tabs li:eq('+new_attr+')' ).addClass('active')
 
-                    wizard_progressbar(items, new_attr)
+                    wizard_progressbar(main, items, new_attr)
                 }
 
-                function wizard_progressbar(items, item) {
+                function wizard_progressbar(main, items, item) {
                     var percent = (item * 100 / items) * 1;
-                    $('#dialer_add_campaign').find('#progressbar').width(percent+'%');
+                    main.find('#wizard_progressbar').width(percent+'%');
                 }
 
             });
