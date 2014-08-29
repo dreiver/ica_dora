@@ -417,16 +417,23 @@
                     <div class="row">
                         <div class="col-md-10">
                             <div id='dialer_add_campaign' class="box box-primary">
+                                <div class="box-footer">
+                                    <button id='dialer_add_campaign_prev' class="btn btn-default disabled">
+                                        <i class="fa fa-arrow-left"></i>
+                                        Prev
+                                    </button>
+                                    <button id='dialer_add_campaign_next' class="btn btn-success btn-next" data-last="Finish ">
+                                        Next 
+                                        <i class="fa fa-arrow-right"></i>
+                                    </button>
+                                </div>
                                 <div class="box-header">
 
                                     <div class="nav-tabs-custom">
                                         <ul id="dialer_tabs" class="nav nav-tabs">
                                             <li class="active"><a>Basic data</a></li>
                                             <li><a>Audios</a></li>
-                                            <li><a>Caca</a></li>
-                                            <li><a>Caca</a></li>
-                                            <li><a>Caca</a></li>
-                                            <li><a>Caca</a></li>
+                                            <li><a>Plays</a></li>
                                             <li><a>Caca</a></li>
                                         </ul>
                                     </div>
@@ -544,7 +551,100 @@
                                             </div><!-- /.tab-pane -->
 
                                             <div class="tab-pane" id="tab_2">
-                                                caca
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <div class="box">
+                                                            <div class="box-header">
+                                                                <h3 class="box-title">Audio Files to Play</h3>
+                                                            </div><!-- /.box-header -->
+                                                            <div class="box-body table-responsive no-padding">
+                                                                <table class="table table-hover">
+                                                                    <tr>
+                                                                        <th>Order</th>
+                                                                        <th>Class</th>
+                                                                        <th>Speech</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Greeting</td>
+                                                                        <td>Welcome to ICA Dial System</td>
+                                                                        <td>
+                                                                            <span class="label label-warning">EDIT</span>
+                                                                            <span class="label label-danger">DEL</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="form-group">
+                                                                                <select class="form-control">
+                                                                                    <option>1</option>
+                                                                                    <option>2</option>
+                                                                                    <option selected>3</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="form-group">
+                                                                                <select class="form-control">
+                                                                                    <option>Greeting</option>
+                                                                                    <option selected>Speech</option>
+                                                                                    <option>Goodbye</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <a class="btn btn-block btn-social btn-google-plus">
+                                                                                <i class="fa fa-music"></i> "Remember change your..." Click to change from library <i class="fa fa-refresh"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span class="label label-warning">SAVE</span>
+                                                                            <span class="label label-warning">CANCEL</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>5</td>
+                                                                        <td>Good bye</td>
+                                                                        <td>Good bye, thanks you for your call.</td>
+                                                                        <td>
+                                                                            <span class="label label-warning">EDIT</span>
+                                                                            <span class="label label-danger">DEL</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="form-group">
+                                                                                <select class="form-control">
+                                                                                    <option>1</option>
+                                                                                    <option>2</option>
+                                                                                    <option>3</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="form-group">
+                                                                                <select class="form-control">
+                                                                                    <option>Greeting</option>
+                                                                                    <option>Speech</option>
+                                                                                    <option>Goodbye</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <a class="btn btn-block btn-social btn-bitbucket">
+                                                                                <i class="fa fa-music"></i> Select audio from library
+                                                                            </a>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span class="label label-warning">ADD</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div><!-- /.box-body -->
+                                                        </div><!-- /.box -->
+                                                    </div>
+                                                </div>
                                             </div><!-- /.tab-pane -->
                                         </div><!-- /.tab-content -->
                                     </form>
@@ -610,17 +710,6 @@
                 $('.slider').slider();
 
                 /* ION SLIDER */
-                $("#range_1").ionRangeSlider({
-                    min: 0,
-                    max: 5000,
-                    from: 1000,
-                    to: 4000,
-                    type: 'double',
-                    step: 1,
-                    prefix: "$",
-                    prettify: false,
-                    hasGrid: true
-                });
 
                 $("#range_2").ionRangeSlider();
                 $("#range_20").ionRangeSlider();
@@ -630,52 +719,6 @@
                 $("#range_24").ionRangeSlider();
                 $("#range_25").ionRangeSlider();
                 $("#range_26").ionRangeSlider();
-
-                $("#range_5").ionRangeSlider({
-                    min: 0,
-                    max: 10,
-                    type: 'single',
-                    step: 0.1,
-                    postfix: " mm",
-                    prettify: false,
-                    hasGrid: true
-                });
-                $("#range_6").ionRangeSlider({
-                    min: -50,
-                    max: 50,
-                    from: 0,
-                    type: 'single',
-                    step: 1,
-                    postfix: "°",
-                    prettify: false,
-                    hasGrid: true
-                });
-
-                $("#range_4").ionRangeSlider({
-                    type: "single",
-                    step: 100,
-                    postfix: " light years",
-                    from: 55000,
-                    hideMinMax: true,
-                    hideFromTo: false
-                });
-                $("#range_3").ionRangeSlider({
-                    type: "double",
-                    postfix: " miles",
-                    step: 10000,
-                    from: 25000000,
-                    to: 35000000,
-                    onChange: function(obj) {
-                        var t = "";
-                        for (var prop in obj) {
-                            t += prop + ": " + obj[prop] + "\r\n";
-                        }
-                        $("#result").html(t);
-                    },
-                    onLoad: function(obj) {
-                        //
-                    }
-                });
             });
         </script>
 
